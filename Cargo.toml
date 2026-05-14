@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "contracts/card_registry",
+    "contracts/pack_opening",
+    "contracts/rewards",
+    "packages/shared_types",
+]
+
+[workspace.dependencies]
+soroban-sdk = { version = "21.7.7" }
+soroban-sdk-testutils = { version = "21.7.7", package = "soroban-sdk", features = ["testutils"] }
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
